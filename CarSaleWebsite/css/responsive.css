@@ -1,0 +1,40 @@
+@media (max-width: 768px) {
+  .car-list {
+    grid-template-columns: 1fr;
+  }
+
+  .nav-links {
+    display: none;
+  }
+}
+@media (max-width: 992px) {
+  .car-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .hero-content h2 {
+    font-size: 42px;
+  }
+}
+
+@media (max-width: 768px) {
+  .car-list {
+    grid-template-columns: 1fr;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .hero-content h2 {
+    font-size: 34px;
+  }
+
+  .hero-content p {
+    font-size: 18px;
+  }
+
+  .featured h2 {
+    font-size: 30px;
+  }
+}

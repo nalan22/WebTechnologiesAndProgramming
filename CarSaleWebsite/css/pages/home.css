@@ -1,0 +1,42 @@
+.hero {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to right, #020617, #0f172a);
+  padding: 60px 20px;
+}
+
+.hero-content {
+  text-align: center;
+  width: 100%;
+  max-width: 700px;
+}
+
+.hero-content h2 {
+  font-size: 52px;
+  margin-bottom: 16px;
+  line-height: 1.1;
+}
+
+.hero-content p {
+  font-size: 20px;
+  margin-bottom: 28px;
+  color: #cbd5e1;
+}
+
+.featured {
+  padding: 70px 0 90px;
+}
+
+.featured h2 {
+  font-size: 40px;
+  margin-bottom: 28px;
+}
+
+.car-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  align-items: stretch;
+}
