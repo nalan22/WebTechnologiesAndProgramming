@@ -2,9 +2,6 @@
   padding: 40px 0;
 }
 
-.page-header h2 {
-  margin-bottom: 15px;
-}
 
 .page-header input {
   width: 100%;
@@ -22,7 +19,7 @@
 }
 
 .page-header {
-  padding: 40px 0 24px;
+  padding:20px 0 10px;
 }
 
 .page-header .container {
@@ -34,10 +31,11 @@
 }
 
 .page-header h2 {
+  margin-left: 40px;
   font-size: 38px;
   font-weight: 700;
-  margin-bottom: 18px;
-  color: #ffffff;
+  margin-bottom: 8px;
+  color: #000000;
 }
 
 .page-header input {

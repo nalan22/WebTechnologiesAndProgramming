@@ -9,11 +9,13 @@
 .page-header h2 {
   font-size: 32px;
   margin-bottom: 6px;
+  text-align: center;
 }
 
 .page-header p {
   color: #666;
   font-size: 15px;
+  text-align: center;
 }
 
 /* =========================
