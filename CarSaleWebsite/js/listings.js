@@ -80,7 +80,7 @@ function hasInspection(car) {
 /* ---------- render ---------- */
 
 function createCarCard(car) {
-  const image = car.images?.[0] || "assets/images/logos/logo.png";
+  const image = car.images?.[0] || "assets/images/default.jpg";
   const mileage = getMileage(car);
 
   return `
@@ -109,7 +109,7 @@ function renderCars(carsToRender) {
     carList.innerHTML += createCarCard(car);
   });
 
-  // BURASI YENİ EKLENEN KISIM
+  // 🔥 BURASI YENİ EKLENEN KISIM
   document.querySelectorAll(".car-card").forEach((card) => {
     card.addEventListener("click", (e) => {
       if (e.target.closest(".btn")) return;

@@ -27,11 +27,16 @@
           <li><a href="add-listing.html">Add Listing</a></li>
           <li><a href="#">About</a></li>
           <li><a href="#">Contact</a></li>
-          
+          <li class="my-listings-link" style="display: none;">
+           <a href="my-listings.html">My Listings</a>
+          </li>
+          <li class="dashboard-link" style="display: none;">
+           <a href="dashboard.html">Dashboard</a>
+          </li>
         </ul>
       </nav>
 
-      <a href="login.html" class="btn">Login</a>
+      <a href="login.html" class="btn profile-btn" id="profileBtn">Login</a>
     </div>
   </header>
 
@@ -58,7 +63,7 @@
               <h1>Log in</h1>
               <p>Enter your information to access your account.</p>
             </div>
-            <form action="#" class="auth-form">
+            <form id="loginForm" action="#" class="auth-form">
               <div class="form-group">
                 <label for="login-email">Email Address</label>
                 <input type="email" id="login-email" placeholder="example@gmail.com" required>
@@ -84,7 +89,7 @@
     </div>
   </section>
 </main>
-
+ <script src="../js/auth.js"></script>
 </html>
 
 <footer class="site-footer">

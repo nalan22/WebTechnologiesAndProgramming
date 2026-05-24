@@ -127,3 +127,14 @@
   color: #6b7280;
   margin-bottom: 10px;
 }
+
+.danger-btn {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.danger-btn:hover {
+  background-color: #b02a37;
+}

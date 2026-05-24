@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AutoDrive | Car Sale</title>
+  <title>AutoDrive | Araba Satış</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <!-- CSS -->
    <link rel="stylesheet" href="../css/base.css">
@@ -26,12 +26,17 @@
           <li><a href="add-listing.html">Add Listing</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="contact.html">Contact</a></li>
-          
+          <li class="my-listings-link" style="display: none;">
+           <a href="my-listings.html">My Listings</a>
+          </li>
+          <li class="dashboard-link" style="display: none;">
+           <a href="dashboard.html">Dashboard</a>
+          </li>
         </ul>
       </nav>
 
       <div class="nav-actions">
-        <a href="login.html" class="btn">Login</a>
+        <a href="login.html" class="btn profile-btn" id="profileBtn">Login</a>
       </div>
     </div>
   </header>
@@ -39,9 +44,9 @@
   <!-- HERO -->
   <section class="hero">
     <div class="container hero-content">
-      <h2>Find your dream car!</h2>
-      <p>Find best cars with best prices!</p>
-      <a href="listings.html" class="btn primary">Check Cars</a>
+      <h2>Hayalindeki Arabayı Bul</h2>
+      <p>En iyi fiyatlarla en kaliteli araçları keşfet</p>
+      <a href="listings.html" class="btn primary">Araçları İncele</a>
     </div>
   </section>
 
@@ -64,7 +69,7 @@
   <!-- JS -->
   <script src="../js/data.js"></script>
   <script src="../js/main.js"></script>
- 
+ <script src="../js/auth.js"></script>
 
 </body>
 </html>

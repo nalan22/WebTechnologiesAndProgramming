@@ -1,0 +1,89 @@
+.my-listings-section {
+  padding: 60px 0;
+  background: #f6f8fb;
+  min-height: 70vh;
+}
+
+.my-listings-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 35px;
+}
+
+.my-listings-top h3 {
+  font-size: 28px;
+  color: #222;
+}
+
+.empty-message {
+  display: none;
+  text-align: center;
+  background: #fff;
+  padding: 50px 20px;
+  border-radius: 18px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+.empty-message h3 {
+  font-size: 26px;
+  margin-bottom: 10px;
+  color: #222;
+}
+
+.empty-message p {
+  color: #666;
+  margin-bottom: 25px;
+}
+
+.my-card-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.my-card-actions a,
+.my-card-actions button {
+  flex: 1;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 14px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.view-btn {
+  background: #222;
+  color: #fff;
+}
+
+.edit-btn {
+  background: #1abc9c;
+  color: #fff;
+}
+
+.delete-btn {
+  background: #e74c3c;
+  color: #fff;
+}
+
+.my-card-actions a:hover,
+.my-card-actions button:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+  .my-listings-top {
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-start;
+  }
+
+  .my-card-actions {
+    flex-direction: column;
+  }
+}

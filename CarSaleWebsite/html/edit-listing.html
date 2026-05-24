@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Listing | AutoDrive</title>
+
+  <link rel="stylesheet" href="../css/pages/add-listing.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+  <header class="navbar">
+    <div class="container">
+      <h1 class="logo">AutoDrive</h1>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="listings.html">Listings</a></li>
+          <li><a href="add-listing.html">Add Listing</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li class="my-listings-link" style="display: none;">
+           <a href="my-listings.html">My Listings</a>
+          </li>
+          <li class="dashboard-link" style="display: none;">
+           <a href="dashboard.html">Dashboard</a>
+          </li>
+        </ul>
+      </nav>
+
+      <a href="login.html" class="btn profile-btn" id="profileBtn">Login</a>
+    </div>
+  </header>
+
+  <section class="page-header">
+    <div class="container">
+      <h2>Edit Listing</h2>
+      <p>Update your car advertisement</p>
+    </div>
+  </section>
+
+  <section class="add-listing-section">
+    <div class="container">
+      <form id="editListingForm" class="add-listing-form">
+        <div class="add-listing-grid">
+
+          <input type="text" id="brand" placeholder="Brand" required>
+          <input type="text" id="model" placeholder="Model" required>
+
+          <select id="type" required>
+            <option value="">Body Type</option>
+            <option value="Sedan">Sedan</option>
+            <option value="SUV">SUV</option>
+            <option value="Hatchback">Hatchback</option>
+            <option value="Coupe">Coupe</option>
+          </select>
+
+          <input type="number" id="year" placeholder="Year" required>
+          <input type="number" id="price" placeholder="Price" required>
+          <input type="number" id="mileage" placeholder="Mileage (km)" required>
+
+          <select id="fuel" required>
+            <option value="">Fuel</option>
+            <option value="Petrol">Petrol</option>
+            <option value="Diesel">Diesel</option>
+            <option value="Hybrid">Hybrid</option>
+            <option value="Electric">Electric</option>
+          </select>
+
+          <select id="transmission" required>
+            <option value="">Transmission</option>
+            <option value="Automatic">Automatic</option>
+            <option value="Manual">Manual</option>
+          </select>
+
+          <input type="text" id="color" placeholder="Color" required>
+          <input type="number" id="horsepower" placeholder="Horsepower">
+          <input type="number" id="engineSize" placeholder="Engine Size (cc)">
+
+          <select id="drive">
+            <option value="">Drive</option>
+            <option value="FWD">FWD</option>
+            <option value="RWD">RWD</option>
+            <option value="AWD">AWD</option>
+          </select>
+
+          <input type="number" step="0.1" id="consumption" placeholder="Consumption (L / 100 km)">
+          <input type="number" id="doors" placeholder="Doors">
+          <input type="number" id="seats" placeholder="Seats">
+
+          <div class="full-width">
+            <input type="text" id="location" placeholder="City, Country">
+          </div>
+
+          <div class="full-width photos-section">
+            <label class="field-label">Photos</label>
+
+            <div id="uploadedPhotos" class="uploaded-photos"></div>
+
+            <div class="photo-actions">
+              <button type="button" id="uploadPhotoBtn" class="mini-btn">Upload Photo</button>
+              <button type="button" id="addImageField" class="mini-btn secondary-mini-btn">+ Add Another Photo</button>
+            </div>
+
+            <div id="imageInputsWrapper" style="display: none;"></div>
+          </div>
+
+          <details class="features-panel full-width" open>
+            <summary>Select Features</summary>
+
+            <div class="features-grid">
+              <label><input type="checkbox" value="Sunroof"> Sunroof</label>
+              <label><input type="checkbox" value="Leather Seats"> Leather Seats</label>
+              <label><input type="checkbox" value="Navigation"> Navigation</label>
+              <label><input type="checkbox" value="Bluetooth"> Bluetooth</label>
+              <label><input type="checkbox" value="Parking Sensors"> Parking Sensors</label>
+              <label><input type="checkbox" value="Rear Camera"> Rear Camera</label>
+              <label><input type="checkbox" value="Heated Seats"> Heated Seats</label>
+              <label><input type="checkbox" value="Cruise Control"> Cruise Control</label>
+              <label><input type="checkbox" value="Lane Assist"> Lane Assist</label>
+              <label><input type="checkbox" value="Blind Spot Monitor"> Blind Spot Monitor</label>
+              <label><input type="checkbox" value="Apple CarPlay"> Apple CarPlay</label>
+              <label><input type="checkbox" value="Android Auto"> Android Auto</label>
+              <label><input type="checkbox" value="Keyless Entry"> Keyless Entry</label>
+              <label><input type="checkbox" value="Push Start"> Push Start</label>
+              <label><input type="checkbox" value="LED Headlights"> LED Headlights</label>
+              <label><input type="checkbox" value="Premium Sound System"> Premium Sound System</label>
+              <label><input type="checkbox" value="Alloy Wheels"> Alloy Wheels</label>
+              <label><input type="checkbox" value="ABS"> ABS</label>
+              <label><input type="checkbox" value="ESP"> ESP</label>
+              <label><input type="checkbox" value="Air Conditioning"> Air Conditioning</label>
+            </div>
+          </details>
+
+          <textarea id="description" class="full-width" placeholder="Description"></textarea>
+
+          <label class="form-checkbox full-width">
+            <input type="checkbox" id="inspection">
+            Vehicle inspection completed
+          </label>
+
+        </div>
+
+        <div class="add-listing-actions">
+          <button type="submit" class="primary-btn">Save Changes</button>
+          <a href="my-listings.html" class="secondary-btn">Cancel</a>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-col">
+        <h3>AutoDrive</h3>
+        <p>Find your perfect car with ease. Browse, compare and drive away happy.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="listings.html">Listings</a></li>
+          <li><a href="add-listing.html">Add Listing</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li>Email: support@autodrive.com</li>
+          <li>Phone: +90 555 555 55 55</li>
+          <li>Istanbul, Turkey</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 AutoDrive. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/edit-listing.js"></script>
+  
+</body>
+</html>

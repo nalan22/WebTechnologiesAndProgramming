@@ -4,6 +4,12 @@ const uploadPhotoBtn = document.getElementById("uploadPhotoBtn");
 const addImageFieldBtn = document.getElementById("addImageField");
 const imageInputsWrapper = document.getElementById("imageInputsWrapper");
 const uploadedPhotos = document.getElementById("uploadedPhotos");
+const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+
+if (!loggedInUser) {
+  alert("Please login first to add a listing.");
+  window.location.href = "login.html";
+}
 
 /* ---------- STORAGE ---------- */
 
@@ -114,6 +120,9 @@ addListingForm.addEventListener("submit", async (e) => {
 
   const newCar = {
     id: generateId(),
+    ownerId: loggedInUser.id,
+    ownerEmail: loggedInUser.email,
+    ownerName: loggedInUser.fullName,
     brand: document.getElementById("brand").value.trim(),
     model: document.getElementById("model").value.trim(),
     type: document.getElementById("type").value,
@@ -143,5 +152,5 @@ addListingForm.addEventListener("submit", async (e) => {
   saveStoredCars(storedCars);
 
   alert("Listing added successfully!");
-  window.location.href = "listings.html";
+  window.location.href = "my-listings.html";
 });
