@@ -1,0 +1,10 @@
+{
+  "name": "autodrive-backend",
+  "version": "1.0.0",
+  "description": "Backend for the AutoDrive car sale website using only built-in Node.js modules.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  }
+}

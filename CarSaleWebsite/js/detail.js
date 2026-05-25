@@ -1,85 +1,37 @@
-const carDetailContainer = document.getElementById("carDetail");
-
+const carDetailContainer = document.getElementById('carDetail');
 const params = new URLSearchParams(window.location.search);
-const carId = Number(params.get("id"));
-
-const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
-
-function getStoredCars() {
-  return JSON.parse(localStorage.getItem("userListings")) || [];
-}
-
-function saveStoredCars(cars) {
-  localStorage.setItem("userListings", JSON.stringify(cars));
-}
+const carId = Number(params.get('id'));
+const loggedInUser = getLoggedInUser();
 
 function getCarImages(car) {
-  if (car.images && car.images.length > 0) {
-    return car.images;
-  }
-
-  if (car.image) {
-    return [car.image];
-  }
-
-  return ["../assets/images/cars/bmw1.png"];
+  if (car.images && car.images.length > 0) return car.images;
+  if (car.image) return [car.image];
+  return ['../assets/images/cars/bmw1.png'];
 }
 
 function getCarFeatures(car) {
-  if (car.features && car.features.length > 0) {
-    return car.features;
-  }
-
-  return ["Air Conditioning", "Power Windows", "ABS"];
+  if (car.features && car.features.length > 0) return car.features;
+  return ['Air Conditioning', 'Power Windows', 'ABS'];
 }
 
-function deleteCurrentListing(id) {
-  const confirmDelete = confirm("Are you sure you want to delete this listing?");
-
-  if (!confirmDelete) {
-    return;
+async function deleteCurrentListing(id) {
+  if (!confirm('Are you sure you want to delete this listing?')) return;
+  try {
+    await apiRequest(`/cars/${id}`, { method: 'DELETE' });
+    alert('Listing deleted successfully.');
+    window.location.href = 'my-listings.html';
+  } catch (error) {
+    alert(error.message);
   }
-
-  const storedCars = getStoredCars();
-
-  const selectedCar = storedCars.find(function (car) {
-    return Number(car.id) === Number(id);
-  });
-
-  if (!selectedCar) {
-    alert("Listing not found.");
-    window.location.href = "my-listings.html";
-    return;
-  }
-
-  if (!loggedInUser || Number(selectedCar.ownerId) !== Number(loggedInUser.id)) {
-    alert("You are not allowed to delete this listing.");
-    window.location.href = "my-listings.html";
-    return;
-  }
-
-  const updatedCars = storedCars.filter(function (car) {
-    return Number(car.id) !== Number(id);
-  });
-
-  saveStoredCars(updatedCars);
-
-  alert("Listing deleted successfully.");
-  window.location.href = "my-listings.html";
 }
 
-function renderCarDetail() {
-  const storedCars = getStoredCars();
-
-  const storedCar = storedCars.find(function (car) {
-    return Number(car.id) === Number(carId);
-  });
-
-  const defaultCar = cars.find(function (car) {
-    return Number(car.id) === Number(carId);
-  });
-
-  const selectedCar = storedCar || defaultCar;
+async function renderCarDetail() {
+  let selectedCar;
+  try {
+    selectedCar = await apiRequest(`/cars/${carId}`);
+  } catch (error) {
+    selectedCar = typeof cars !== 'undefined' ? cars.find(car => Number(car.id) === Number(carId)) : null;
+  }
 
   if (!selectedCar) {
     carDetailContainer.innerHTML = `
@@ -87,151 +39,74 @@ function renderCarDetail() {
         <h2>Car not found</h2>
         <p>The vehicle you are looking for does not exist.</p>
         <a href="listings.html" class="btn primary">Back to Listings</a>
-      </div>
-    `;
+      </div>`;
     return;
   }
 
   const carImages = getCarImages(selectedCar);
   const carFeatures = getCarFeatures(selectedCar);
-
-  const isOwner =
-    loggedInUser &&
-    selectedCar.ownerId &&
-    Number(selectedCar.ownerId) === Number(loggedInUser.id);
+  const isOwner = loggedInUser && selectedCar.ownerId && Number(selectedCar.ownerId) === Number(loggedInUser.id);
 
   carDetailContainer.innerHTML = `
     <section class="detail-card">
       <div class="detail-image">
         <button class="slider-btn prev" id="prevBtn">&#10094;</button>
-
-        <img
-          id="mainCarImage"
-          src="${carImages[0]}"
-          alt="${selectedCar.brand} ${selectedCar.model}"
-        >
-
+        <img id="mainCarImage" src="${carImages[0]}" alt="${selectedCar.brand} ${selectedCar.model}">
         <button class="slider-btn next" id="nextBtn">&#10095;</button>
-
         <div class="thumbnail-row">
-          ${carImages
-            .map(function (image, index) {
-              return `
-                <img
-                  src="${image}"
-                  alt="${selectedCar.brand} ${selectedCar.model}"
-                  class="thumbnail ${index === 0 ? "active" : ""}"
-                  data-index="${index}"
-                >
-              `;
-            })
-            .join("")}
+          ${carImages.map((image, index) => `<img src="${image}" alt="${selectedCar.brand} ${selectedCar.model}" class="thumbnail ${index === 0 ? 'active' : ''}" data-index="${index}">`).join('')}
         </div>
       </div>
-
       <div class="detail-info">
         <h2>${selectedCar.brand} ${selectedCar.model}</h2>
-
         <p class="detail-price">$${Number(selectedCar.price).toLocaleString()}</p>
-
-        <p class="detail-description">
-          ${selectedCar.description || "No description available."}
-        </p>
-
+        <p class="detail-description">${selectedCar.description || 'No description available.'}</p>
         <div class="detail-specs">
-          <div class="spec-item"><span>Year</span><strong>${selectedCar.year || "-"}</strong></div>
-          <div class="spec-item"><span>Fuel</span><strong>${selectedCar.fuel || "-"}</strong></div>
-          <div class="spec-item"><span>Transmission</span><strong>${selectedCar.transmission || "-"}</strong></div>
+          <div class="spec-item"><span>Year</span><strong>${selectedCar.year || '-'}</strong></div>
+          <div class="spec-item"><span>Fuel</span><strong>${selectedCar.fuel || '-'}</strong></div>
+          <div class="spec-item"><span>Transmission</span><strong>${selectedCar.transmission || '-'}</strong></div>
           <div class="spec-item"><span>Mileage</span><strong>${Number(selectedCar.mileage || 0).toLocaleString()} km</strong></div>
-          <div class="spec-item"><span>Type</span><strong>${selectedCar.type || "-"}</strong></div>
-          <div class="spec-item"><span>Color</span><strong>${selectedCar.color || "-"}</strong></div>
+          <div class="spec-item"><span>Type</span><strong>${selectedCar.type || '-'}</strong></div>
+          <div class="spec-item"><span>Color</span><strong>${selectedCar.color || '-'}</strong></div>
           <div class="spec-item"><span>Horsepower</span><strong>${selectedCar.horsepower || 0} HP</strong></div>
-          <div class="spec-item"><span>Drive</span><strong>${selectedCar.drive || "-"}</strong></div>
+          <div class="spec-item"><span>Drive</span><strong>${selectedCar.drive || '-'}</strong></div>
           <div class="spec-item"><span>Consumption</span><strong>${selectedCar.consumption || 0} L / 100 km</strong></div>
           <div class="spec-item"><span>Engine Size</span><strong>${selectedCar.engineSize || 0} cc</strong></div>
-          <div class="spec-item"><span>Doors</span><strong>${selectedCar.doors || "-"}</strong></div>
-          <div class="spec-item"><span>Seats</span><strong>${selectedCar.seats || "-"}</strong></div>
+          <div class="spec-item"><span>Doors</span><strong>${selectedCar.doors || '-'}</strong></div>
+          <div class="spec-item"><span>Seats</span><strong>${selectedCar.seats || '-'}</strong></div>
         </div>
-
         <div class="detail-features">
           <h3>Features</h3>
-          <div class="features-list">
-            ${carFeatures
-              .map(function (feature) {
-                return `<div class="feature-item">${feature}</div>`;
-              })
-              .join("")}
-          </div>
+          <div class="features-list">${carFeatures.map(feature => `<div class="feature-item">${feature}</div>`).join('')}</div>
         </div>
-
         <div class="detail-actions">
           <a href="listings.html" class="btn">Back to Listings</a>
-          <a href="#" class="btn primary">Contact Seller</a>
-
-          ${
-            isOwner
-              ? `
-                <a href="edit-listing.html?id=${selectedCar.id}" class="btn">Edit Listing</a>
-                <button class="btn danger-btn" onclick="deleteCurrentListing(${selectedCar.id})">
-                  Delete Listing
-                </button>
-              `
-              : ""
-          }
+          <a href="contact.html" class="btn primary">Contact Seller</a>
+          ${isOwner ? `<a href="edit-listing.html?id=${selectedCar.id}" class="btn">Edit Listing</a><button class="btn danger-btn" onclick="deleteCurrentListing(${selectedCar.id})">Delete Listing</button>` : ''}
         </div>
       </div>
-    </section>
-  `;
+    </section>`;
 
   setupImageSlider(carImages);
 }
 
 function setupImageSlider(carImages) {
   let currentImageIndex = 0;
-
-  const mainCarImage = document.getElementById("mainCarImage");
-  const prevBtn = document.getElementById("prevBtn");
-  const nextBtn = document.getElementById("nextBtn");
-  const thumbnails = document.querySelectorAll(".thumbnail");
+  const mainCarImage = document.getElementById('mainCarImage');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const thumbnails = document.querySelectorAll('.thumbnail');
 
   function updateMainImage(index) {
     currentImageIndex = index;
     mainCarImage.src = carImages[currentImageIndex];
-
-    thumbnails.forEach(function (thumb) {
-      thumb.classList.remove("active");
-    });
-
-    thumbnails[currentImageIndex].classList.add("active");
+    thumbnails.forEach(thumb => thumb.classList.remove('active'));
+    thumbnails[currentImageIndex].classList.add('active');
   }
 
-  if (prevBtn) {
-    prevBtn.addEventListener("click", function () {
-      currentImageIndex =
-        currentImageIndex === 0
-          ? carImages.length - 1
-          : currentImageIndex - 1;
-
-      updateMainImage(currentImageIndex);
-    });
-  }
-
-  if (nextBtn) {
-    nextBtn.addEventListener("click", function () {
-      currentImageIndex =
-        currentImageIndex === carImages.length - 1
-          ? 0
-          : currentImageIndex + 1;
-
-      updateMainImage(currentImageIndex);
-    });
-  }
-
-  thumbnails.forEach(function (thumbnail) {
-    thumbnail.addEventListener("click", function () {
-      updateMainImage(Number(thumbnail.dataset.index));
-    });
-  });
+  if (prevBtn) prevBtn.addEventListener('click', () => updateMainImage(currentImageIndex === 0 ? carImages.length - 1 : currentImageIndex - 1));
+  if (nextBtn) nextBtn.addEventListener('click', () => updateMainImage(currentImageIndex === carImages.length - 1 ? 0 : currentImageIndex + 1));
+  thumbnails.forEach(thumbnail => thumbnail.addEventListener('click', () => updateMainImage(Number(thumbnail.dataset.index))));
 }
 
 renderCarDetail();
