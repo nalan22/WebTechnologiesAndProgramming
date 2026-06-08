@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AutoDrive | Find Your Dream Car</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/pages/home.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="container">
+      <h1 class="logo">AutoDrive</h1>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="listings.html">Listings</a></li>
+          <li><a href="add-listing.html">Add Listing</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li class="my-listings-link" style="display: none;">
+            <a href="my-listings.html">My Listings</a>
+          </li>
+          <li class="dashboard-link" style="display: none;">
+            <a href="dashboard.html">Dashboard</a>
+          </li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <a href="login.html" class="btn profile-btn" id="profileBtn">Login</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container hero-content">
+      <span class="hero-eyebrow">Premium Car Marketplace</span>
+      <h2>Find Your <span>Dream Car</span><br>Today</h2>
+      <p>Explore thousands of quality vehicles from trusted sellers. The right car is just a search away.</p>
+      <div class="hero-actions">
+        <a href="listings.html" class="btn primary btn-lg">Browse Cars</a>
+        <a href="add-listing.html" class="btn secondary btn-lg">Sell Your Car</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <strong>500+</strong>
+          <span>Listings</span>
+        </div>
+        <div class="hero-stat">
+          <strong>50+</strong>
+          <span>Brands</span>
+        </div>
+        <div class="hero-stat">
+          <strong>1K+</strong>
+          <span>Happy Buyers</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="featured">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Featured <span>Cars</span></h2>
+        <div class="featured-controls">
+          <button class="slider-control" id="featuredPrev">&#10094;</button>
+          <button class="slider-control" id="featuredNext">&#10095;</button>
+        </div>
+      </div>
+      <div class="featured-slider-window">
+        <div class="featured-slider-track" id="featuredCars"></div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-col">
+        <span class="footer-brand">AutoDrive</span>
+        <p>Find your perfect car with ease. Browse, compare and drive away happy.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="listings.html">Listings</a></li>
+          <li><a href="add-listing.html">Add Listing</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p class="contact-item">support@autodrive.com</p>
+        <p class="contact-item">+90 555 555 55 55</p>
+        <p class="contact-item">Istanbul, Turkey</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 AutoDrive. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="../js/api.js"></script>
+  <script src="../js/data.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/auth.js"></script>
+</body>
+</html>

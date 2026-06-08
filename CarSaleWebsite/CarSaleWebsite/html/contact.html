@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | AutoDrive</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/pages/contact.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="container">
+      <h1 class="logo">AutoDrive</h1>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="listings.html">Listings</a></li>
+          <li><a href="add-listing.html">Add Listing</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li class="my-listings-link" style="display: none;">
+            <a href="my-listings.html">My Listings</a>
+          </li>
+          <li class="dashboard-link" style="display: none;">
+            <a href="dashboard.html">Dashboard</a>
+          </li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <a href="login.html" class="btn profile-btn" id="profileBtn">Login</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="contact-page">
+    <div class="container">
+      <div class="contact-hero">
+        <h1>Contact Us</h1>
+        <p>Have a question, need support, or want to learn more about AutoDrive? We're here to help.</p>
+      </div>
+
+      <div class="contact-section">
+        <div class="contact-info">
+          <div class="info-card">
+            <h3>Email</h3>
+            <p>support@autodrive.com</p>
+          </div>
+          <div class="info-card">
+            <h3>Phone</h3>
+            <p>+90 555 555 55 55</p>
+          </div>
+          <div class="info-card">
+            <h3>Location</h3>
+            <p>Istanbul, Turkey</p>
+          </div>
+          <div class="info-card">
+            <h3>Working Hours</h3>
+            <p>Monday – Friday: 09:00 – 18:00</p>
+          </div>
+        </div>
+
+        <div class="contact-form-box">
+          <h2>Send a Message</h2>
+          <form class="contact-form">
+            <input type="text" placeholder="Full Name" required>
+            <input type="email" placeholder="Email Address" required>
+            <input type="text" placeholder="Subject" required>
+            <textarea placeholder="Write your message here..." rows="6" required></textarea>
+            <button type="submit">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-col">
+        <span class="footer-brand">AutoDrive</span>
+        <p>Find your perfect car with ease. Browse, compare and drive away happy.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="listings.html">Listings</a></li>
+          <li><a href="add-listing.html">Add Listing</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p class="contact-item">support@autodrive.com</p>
+        <p class="contact-item">+90 555 555 55 55</p>
+        <p class="contact-item">Istanbul, Turkey</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 AutoDrive. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="../js/api.js"></script>
+  <script src="../js/auth.js"></script>
+</body>
+</html>

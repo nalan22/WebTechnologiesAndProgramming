@@ -1,0 +1,8 @@
+/* Register page reuses auth styles from login.css */
+.auth-page {
+  min-height: calc(100vh - 72px - 200px);
+  display: flex;
+  align-items: center;
+  padding: 60px 0;
+  background: var(--bg);
+}

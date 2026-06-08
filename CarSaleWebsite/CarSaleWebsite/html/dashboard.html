@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard | AutoDrive</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/pages/dashboard.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="container">
+      <h1 class="logo">AutoDrive</h1>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="listings.html">Listings</a></li>
+          <li><a href="add-listing.html">Add Listing</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li class="my-listings-link" style="display: none;">
+            <a href="my-listings.html">My Listings</a>
+          </li>
+          <li class="dashboard-link" style="display: none;">
+            <a href="dashboard.html" class="active">Dashboard</a>
+          </li>
+        </ul>
+      </nav>
+      <a href="#" class="btn" id="logoutBtn">Logout</a>
+    </div>
+  </header>
+
+  <section class="dashboard-section">
+    <div class="container">
+
+      <div class="dashboard-header">
+        <div>
+          <h2>Welcome back, <span id="userName">User</span></h2>
+          <p>Manage your listings and account overview</p>
+        </div>
+        <a href="add-listing.html" class="primary-btn">+ Add New Listing</a>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <h3 id="totalListings">0</h3>
+          <p>Total Listings</p>
+        </div>
+        <div class="stat-card">
+          <h3 id="totalValue">$0</h3>
+          <p>Total Car Value</p>
+        </div>
+        <div class="stat-card">
+          <h3 id="latestCar">None</h3>
+          <p>Latest Listing</p>
+        </div>
+        <div class="stat-card">
+          <h3 id="averagePrice">$0</h3>
+          <p>Average Price</p>
+        </div>
+      </div>
+
+      <div class="dashboard-content">
+        <div class="dashboard-box">
+          <div class="box-header">
+            <h3>Recent Listings</h3>
+            <a href="my-listings.html">View All</a>
+          </div>
+          <div id="recentListings" class="recent-listings"></div>
+          <div id="noRecentListings" class="empty-dashboard-message">
+            <p>You have not added any listings yet.</p>
+            <a href="add-listing.html" class="primary-btn">Add Listing</a>
+          </div>
+        </div>
+
+        <div class="dashboard-box">
+          <div class="box-header">
+            <h3>Quick Actions</h3>
+          </div>
+          <div class="quick-actions">
+            <a href="add-listing.html">Add Listing</a>
+            <a href="my-listings.html">My Listings</a>
+            <a href="listings.html">Browse Cars</a>
+            <a href="contact.html">Contact Support</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-col">
+        <span class="footer-brand">AutoDrive</span>
+        <p>Find your perfect car with ease. Browse, compare and drive away happy.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="listings.html">Listings</a></li>
+          <li><a href="add-listing.html">Add Listing</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p class="contact-item">support@autodrive.com</p>
+        <p class="contact-item">+90 555 555 55 55</p>
+        <p class="contact-item">Istanbul, Turkey</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 AutoDrive. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="../js/api.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/dashboard.js"></script>
+</body>
+</html>

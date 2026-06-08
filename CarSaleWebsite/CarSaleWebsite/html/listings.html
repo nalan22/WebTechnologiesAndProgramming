@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Car Listings | AutoDrive</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/pages/listings.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="container">
+      <h1 class="logo">AutoDrive</h1>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="listings.html">Listings</a></li>
+          <li><a href="add-listing.html">Add Listing</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li class="my-listings-link" style="display: none;">
+            <a href="my-listings.html">My Listings</a>
+          </li>
+          <li class="dashboard-link" style="display: none;">
+            <a href="dashboard.html">Dashboard</a>
+          </li>
+        </ul>
+      </nav>
+      <a href="login.html" class="btn profile-btn" id="profileBtn">Login</a>
+    </div>
+  </header>
+
+  <section class="page-header">
+    <div class="container">
+      <h2>Browse Cars</h2>
+      <p>Find the perfect vehicle from our extensive collection</p>
+    </div>
+  </section>
+
+  <section class="listings">
+    <div class="container listings-wrapper">
+
+      <aside class="filters">
+        <h3>Filters</h3>
+
+        <div class="filter-group">
+          <select id="makeFilter">
+            <option value="">Make</option>
+            <option value="BMW">BMW</option>
+            <option value="Mercedes">Mercedes</option>
+            <option value="Audi">Audi</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <select id="modelFilter">
+            <option value="">Model</option>
+            <option value="320i">320i</option>
+            <option value="C200">C200</option>
+            <option value="A4">A4</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <select id="typeFilter">
+            <option value="">Type</option>
+            <option value="Sedan">Sedan</option>
+            <option value="SUV">SUV</option>
+            <option value="Hatchback">Hatchback</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <input type="text" id="filterSearchInput" placeholder="Full-text search">
+        </div>
+
+        <div class="filter-section">
+          <h4>Price</h4>
+          <div class="range-fields">
+            <input type="number" id="priceFrom" placeholder="From">
+            <input type="number" id="priceTo" placeholder="To">
+          </div>
+        </div>
+
+        <div class="filter-section">
+          <h4>Mileage (km)</h4>
+          <div class="range-fields">
+            <input type="number" id="kmFrom" placeholder="From">
+            <input type="number" id="kmTo" placeholder="To">
+          </div>
+        </div>
+
+        <div class="filter-section">
+          <h4>First Registration</h4>
+          <div class="range-fields">
+            <select id="yearFrom">
+              <option value="">From</option>
+              <option value="2018">2018</option>
+              <option value="2019">2019</option>
+              <option value="2020">2020</option>
+              <option value="2021">2021</option>
+              <option value="2022">2022</option>
+            </select>
+            <select id="yearTo">
+              <option value="">To</option>
+              <option value="2018">2018</option>
+              <option value="2019">2019</option>
+              <option value="2020">2020</option>
+              <option value="2021">2021</option>
+              <option value="2022">2022</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="filter-section checkbox-row">
+          <label>
+            <input type="checkbox" id="inspectionFilter">
+            Vehicle inspection completed
+          </label>
+        </div>
+
+        <details class="advanced-filter">
+          <summary>Transmission</summary>
+          <select id="transmissionFilter">
+            <option value="">All</option>
+            <option value="Automatic">Automatic</option>
+            <option value="Manual">Manual</option>
+          </select>
+        </details>
+
+        <details class="advanced-filter">
+          <summary>Fuel</summary>
+          <select id="fuelFilter">
+            <option value="">All</option>
+            <option value="Petrol">Petrol</option>
+            <option value="Diesel">Diesel</option>
+            <option value="Hybrid">Hybrid</option>
+            <option value="Electric">Electric</option>
+          </select>
+        </details>
+
+        <details class="advanced-filter">
+          <summary>Body Type</summary>
+          <select id="bodyTypeFilter">
+            <option value="">All</option>
+            <option value="Sedan">Sedan</option>
+            <option value="SUV">SUV</option>
+            <option value="Coupe">Coupe</option>
+            <option value="Hatchback">Hatchback</option>
+          </select>
+        </details>
+
+        <details class="advanced-filter">
+          <summary>Colour</summary>
+          <select id="colorFilter">
+            <option value="">All</option>
+            <option value="Black">Black</option>
+            <option value="White">White</option>
+            <option value="Gray">Gray</option>
+            <option value="Blue">Blue</option>
+            <option value="Red">Red</option>
+          </select>
+        </details>
+
+        <details class="advanced-filter">
+          <summary>Drive</summary>
+          <select id="driveFilter">
+            <option value="">All</option>
+            <option value="FWD">FWD</option>
+            <option value="RWD">RWD</option>
+            <option value="AWD">AWD</option>
+          </select>
+        </details>
+      </aside>
+
+      <div class="listings-content">
+        <div class="listings-toolbar">
+          <div class="results-count" id="resultsCount">0 cars found</div>
+          <div class="toolbar-search">
+            <input type="text" id="searchInput" placeholder="Search by brand or model...">
+          </div>
+          <div class="sorting">
+            <select id="sortSelect">
+              <option value="">Sort By</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+              <option value="newest">Newest First</option>
+              <option value="mileage-low">Lowest Mileage</option>
+            </select>
+          </div>
+          <button id="resetFilters">Reset Filters</button>
+        </div>
+
+        <div class="car-list" id="carList"></div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-col">
+        <span class="footer-brand">AutoDrive</span>
+        <p>Find your perfect car with ease. Browse, compare and drive away happy.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="listings.html">Listings</a></li>
+          <li><a href="add-listing.html">Add Listing</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p class="contact-item">support@autodrive.com</p>
+        <p class="contact-item">+90 555 555 55 55</p>
+        <p class="contact-item">Istanbul, Turkey</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 AutoDrive. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="../js/api.js"></script>
+  <script src="../js/data.js"></script>
+  <script src="../js/listings.js"></script>
+  <script src="../js/auth.js"></script>
+</body>
+</html>

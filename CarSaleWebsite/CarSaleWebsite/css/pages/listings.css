@@ -1,0 +1,251 @@
+.page-header {
+  padding: 48px 0 28px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 8px;
+}
+
+.page-header h2 {
+  font-family: var(--font-display);
+  font-size: 36px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin-bottom: 4px;
+}
+
+.listings {
+  padding: 32px 0 80px;
+}
+
+.listings-wrapper {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+/* ── FILTERS ── */
+.filters {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  position: sticky;
+  top: 92px;
+}
+
+.filters h3 {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: var(--text);
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border);
+}
+
+.filter-group,
+.filter-section {
+  margin-bottom: 18px;
+}
+
+.filter-group select,
+.filter-group input,
+.range-fields input,
+.range-fields select,
+.advanced-filter select {
+  width: 100%;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  font-size: 14px;
+  appearance: none;
+  cursor: pointer;
+}
+
+.filter-group select:focus,
+.filter-group input:focus,
+.range-fields input:focus,
+.advanced-filter select:focus {
+  border-color: var(--primary);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(200,169,110,0.1);
+}
+
+.filter-section h4 {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-secondary);
+  margin-bottom: 10px;
+}
+
+.range-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.checkbox-row label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  cursor: pointer;
+  color: var(--text-secondary);
+}
+
+.checkbox-row input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--primary);
+}
+
+.advanced-filter {
+  border-top: 1px solid var(--border);
+  padding: 14px 0;
+}
+
+.advanced-filter:last-child {
+  border-bottom: 1px solid var(--border);
+}
+
+.advanced-filter summary {
+  list-style: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 4px;
+}
+
+.advanced-filter summary::-webkit-details-marker { display: none; }
+
+.advanced-filter summary::after {
+  content: "▾";
+  font-size: 14px;
+  transition: transform 0.2s ease;
+  color: var(--primary);
+}
+
+.advanced-filter[open] summary::after {
+  transform: rotate(180deg);
+}
+
+.advanced-filter select {
+  margin-top: 12px;
+}
+
+/* ── LISTINGS RIGHT SIDE ── */
+.listings-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.results-count {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.toolbar-search {
+  flex: 1;
+}
+
+.toolbar-search input {
+  padding: 10px 16px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  font-size: 14px;
+}
+
+.toolbar-search input:focus {
+  border-color: var(--primary);
+  outline: none;
+}
+
+.sorting select {
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  font-size: 14px;
+  cursor: pointer;
+  appearance: none;
+  padding-right: 32px;
+}
+
+.sorting select:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+#resetFilters {
+  padding: 10px 18px;
+  border: 1px solid var(--border-gold);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  background: transparent;
+  color: var(--primary);
+  font-weight: 600;
+  font-size: 13px;
+  transition: 0.2s ease;
+  white-space: nowrap;
+}
+
+#resetFilters:hover {
+  background: var(--primary-light);
+}
+
+.car-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.no-results {
+  color: var(--text-secondary);
+  font-size: 16px;
+  padding: 40px 0;
+  text-align: center;
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 1100px) {
+  .car-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .listings-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .filters {
+    position: static;
+  }
+}
+
+@media (max-width: 600px) {
+  .car-list {
+    grid-template-columns: 1fr;
+  }
+
+  .listings-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
